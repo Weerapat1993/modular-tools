@@ -7,7 +7,7 @@ const { Clone, Status } = require('./src/commands')
 
 let cmdValue
 let envValue
-const CMD_NAME = 'modular'
+const CMD_NAME = 'modular-tools'
 const pwd = shell.pwd().stdout
 
 program

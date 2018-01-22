@@ -11,6 +11,7 @@ const INQUIRER = {
 const COMMANDS = {
   ADD: "Add - Modular Config",
   REMOVE: "Remove - Modular Config",
+  CANCEL: "Cancel",
 }
 
 exports.INQUIRER = INQUIRER

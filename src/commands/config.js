@@ -18,7 +18,10 @@ const Config = async (pwd, cmd, env) => {
       type: INQUIRER.list,
       name: "config_type",
       message: "What do you want?",
-      choices: Object.keys(COMMANDS).map((key) => COMMANDS[key]),
+      choices: [
+        ...Object.keys(COMMANDS).map((key) => COMMANDS[key]),
+        new inquirer.Separator(),
+      ],
     },
   ])
   switch(answer.config_type) {
