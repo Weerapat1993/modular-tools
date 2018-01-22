@@ -3,7 +3,7 @@
 const program = require('commander')
 const shell = require('shelljs')
 const packageJson = require('./package.json')
-const { ConfigAdd, ConfigRemove, Clone, Status } = require('./src/commands')
+const { Config, ConfigAdd, ConfigRemove, Clone, Status } = require('./src/commands')
 
 let cmdValue
 let envValue
@@ -27,8 +27,9 @@ program.on('--help', function(){
   console.log('')
   console.log(`    ${CMD_NAME} clone`)
   console.log(`    ${CMD_NAME} status`)
-  console.log(`    ${CMD_NAME} config:add [name]`)
-  console.log(`    ${CMD_NAME} config:remove [name]`)
+  console.log(`    ${CMD_NAME} config`)
+  // console.log(`    ${CMD_NAME} config:add [name]`)
+  // console.log(`    ${CMD_NAME} config:remove [name]`)
   console.log('')
 })
 
@@ -41,20 +42,23 @@ switch(cmdValue) {
   case 'status':
     Status(pwd, cmdValue, envValue)
     break
-  case 'config:add':
-    if(envValue) {
-      ConfigAdd(pwd, cmdValue, envValue)
-    } else {
-      program.help()
-    }
+  case 'config':
+    Config(pwd, cmdValue, envValue)
     break
-  case 'config:remove':
-    if(envValue) {
-      ConfigRemove(pwd, cmdValue, envValue)
-    } else {
-      program.help()
-    }
-    break
+  // case 'config:add':
+  //   if(envValue) {
+  //     ConfigAdd(pwd, cmdValue, envValue)
+  //   } else {
+  //     program.help()
+  //   }
+  //   break
+  // case 'config:remove':
+  //   if(envValue) {
+  //     ConfigRemove(pwd, cmdValue, envValue)
+  //   } else {
+  //     program.help()
+  //   }
+  //   break
   default:
     console.log('')
     console.log('  command:', cmdValue, 'is not found.')

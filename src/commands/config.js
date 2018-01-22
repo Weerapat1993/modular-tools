@@ -1,7 +1,55 @@
 const fs = require('fs-extra')
 const chalk = require('chalk')
+const inquirer = require('inquirer')
 const { path, createTable } = require('../utils')
+const { INQUIRER, COMMANDS } = require('../config/command-list')
 const modularConfig = require('../../modular.config.json')
+
+/**
+ * Modular Clone Config
+ * @param {stirng} pwd 
+ * @param {string} cmd 
+ * @param {stirng} env 
+ */
+const Config = async (pwd, cmd, env) => {
+  const choices = modularConfig.childModular.map(item => item.project_name)
+  const answer = await inquirer.prompt([
+    {
+      type: INQUIRER.list,
+      name: "config_type",
+      message: "What do you want?",
+      choices: Object.keys(COMMANDS).map((key) => COMMANDS[key]),
+    },
+  ])
+  switch(answer.config_type) {
+    case COMMANDS.ADD:
+      const project = await inquirer.prompt([
+        {
+          type: INQUIRER.input,
+          name: 'name',
+          message: "What is a project name?",
+        }
+      ])
+      ConfigAdd(pwd, cmd, project.name)
+      break
+    case COMMANDS.REMOVE:
+      const project2 = await inquirer.prompt([
+        {
+          type: INQUIRER.list,
+          name: 'name',
+          message: "Please select project name for remove?",
+          choices: [
+            ...choices,
+            new inquirer.Separator()
+          ]
+        }
+      ])
+      ConfigRemove(pwd, cmd, project2.name)
+      break
+    default:
+  }
+}
+
 
 /**
  * Modular Clone Config Add
@@ -75,6 +123,7 @@ const ModularTable = (data) => {
   console.log('')
 }
 
+exports.Config = Config
 exports.ConfigAdd = ConfigAdd
 exports.ConfigRemove = ConfigRemove
 exports.CreateModularTable = CreateModularTable
