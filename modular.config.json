@@ -1,0 +1,17 @@
+{
+  "parentModular": "/Users/scale360/Desktop/Scale360/shopbank-uk-mobile",
+  "childModular": [
+    {
+      "project_name": "MarketPlace",
+      "path": "/Users/scale360/Desktop/Scale360/modular-marketplace"
+    },
+    {
+      "project_name": "Bank",
+      "path": "/Users/scale360/Desktop/Scale360/modular-bank2"
+    },
+    {
+      "project_name": "Authentication",
+      "path": "/Users/scale360/Desktop/Scale360/modular-authentication"
+    }
+  ]
+}
