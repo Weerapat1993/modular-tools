@@ -53,6 +53,14 @@ class MakeFile extends Log {
   }
 
   copyFile(templateName, pathName) {
+    if(!fs.existsSync(templateName)) {
+      this.data.push([
+        chalk.red('D'),
+        chalk.red(templateName.replace(this.pwd, '')),
+        '',
+      ])
+      return this
+    }
     if (!fs.existsSync(pathName)) {
       fs.copyFileSync(templateName, pathName)
       // this.success(`[A] file ${templateName} to ${pathName} success.`)

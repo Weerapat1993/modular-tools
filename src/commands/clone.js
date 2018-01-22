@@ -1,7 +1,8 @@
 const shell = require('shelljs')
 const chalk = require('chalk')
-const { MakeFile } = require('../utils')
+const { MakeFile, Log } = require('../utils')
 const modularJSON = require('../../modular.config.json')
+const log = new Log()
 
 /**
  * Modular Clone
@@ -21,11 +22,15 @@ const Clone = async (pwd, cmd, env) => {
       const parentModular = dataSrc.map(item => `${projectPath}/node_modules/${projectName}/${item}`)
       // console.log(JSON.stringify(childModular, null, '  '))
       // console.log(JSON.stringify(parentModular, null, '  '))
-      const file = new MakeFile(cmd, env, pwd)
-      childModular.forEach((item, i) => {
-        file.copyFile(childModular[i], parentModular[i])
-      })
-      file.status()
+      if(dataSrc.length) {
+        const file = new MakeFile(cmd, env, pwd)
+        childModular.forEach((item, i) => {
+          file.copyFile(childModular[i], parentModular[i])
+        })
+        file.status()
+      } else {
+        log.error('Error: Commit is not exists.')
+      }
     } else {
       console.log(chalk.red('Error: cannot find project name'))
     }
