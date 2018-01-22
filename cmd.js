@@ -26,7 +26,7 @@ program.on('--help', function(){
   console.log('  Commands:')
   console.log('')
   console.log(`    ${CMD_NAME} clone`)
-  console.log(`    ${CMD_NAME} status`)
+  console.log(`    ${CMD_NAME} config`)
   console.log('')
 })
 
@@ -36,7 +36,7 @@ switch(cmdValue) {
   case 'clone':
     Clone(pwd, cmdValue, envValue)
     break
-  case 'status':
+  case 'config':
     Status(pwd, cmdValue, envValue)
     break
   default:

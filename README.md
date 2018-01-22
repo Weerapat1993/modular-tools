@@ -9,7 +9,7 @@ npm install -g
 
 ### Modular Config Project
 ```sh
-modular-tools status
+modular-tools config
 ```
 
 ### Add Modular Config

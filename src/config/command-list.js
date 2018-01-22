@@ -9,6 +9,7 @@ const INQUIRER = {
 }
 
 const COMMANDS = {
+  EDIT: "Edit - Path Project Name",
   ADD: "Add - Modular Config",
   REMOVE: "Remove - Modular Config",
   CANCEL: "Cancel",

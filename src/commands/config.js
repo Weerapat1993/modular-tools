@@ -25,12 +25,24 @@ const Config = async (pwd, cmd, env) => {
     },
   ])
   switch(answer.config_type) {
+    case COMMANDS.EDIT:
+      console.log(`\n Old Path: ${chalk.blue(modularConfig.parentModular)}\n`)
+      const project0 = await inquirer.prompt([
+        {
+          type: INQUIRER.input,
+          name: 'name',
+          message: "Input path parent modular project name?",
+          default: () => pwd || modularConfig.parentModular
+        }
+      ])
+      ConfigEdit(project0.name)
+      break
     case COMMANDS.ADD:
       const project = await inquirer.prompt([
         {
           type: INQUIRER.input,
           name: 'name',
-          message: "What is a project name?",
+          message: "Input your project name?",
         }
       ])
       ConfigAdd(pwd, cmd, project.name)
@@ -53,9 +65,22 @@ const Config = async (pwd, cmd, env) => {
   }
 }
 
+/**
+ * Modular Config Edit Project Name
+ * @param {stirng} pwd 
+ * @param {string} cmd 
+ * @param {stirng} env 
+ */
+const ConfigEdit = async (pathName) => {
+  const fileJson = {
+    ...modularConfig,
+    parentModular: pathName
+  }
+  fs.writeFileSync(path('/modular.config.json'), JSON.stringify(fileJson, null, '  '))
+}
 
 /**
- * Modular Clone Config Add
+ * Modular Config Add
  * @param {stirng} pwd 
  * @param {string} cmd 
  * @param {stirng} env 
