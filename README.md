@@ -1,14 +1,21 @@
 # Modular Tools
 
+### How to use
+```
+git clone https://github.com/Weerapat1993/modular-tools.git
+cd modular-tools
+npm install -g
+```
+
 ### Modular Config Project
 ```sh
 modular-tools status
 ```
 
-### ADD
+### Add Modular Config
 ![Add Child Modular](./src/assets/images/add.gif)
 
-### REMOVE
+### Remove Modular Config
 ![Add Child Modular](./src/assets/images/remove.gif)
 
 ### Clone `Child Modular` to `Parent Modular`
@@ -16,5 +23,5 @@ modular-tools status
 modular-tools clone
 ```
 
-### CLONE
+### Clone Modular
 ![Add Child Modular](./src/assets/images/clone.gif)
