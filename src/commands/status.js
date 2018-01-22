@@ -1,4 +1,4 @@
-const { ModularTable } = require('./config')
+const { ModularTable, Config } = require('./config')
 const modularConfig = require('../../modular.config.json')
 
 /**
@@ -10,6 +10,7 @@ const modularConfig = require('../../modular.config.json')
 const Status = async (pwd, cmd, env) => {
   const modulars = modularConfig.childModular
   ModularTable(modulars)
+  Config(pwd, cmd, env)
 }
 
 module.exports = Status
