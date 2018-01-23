@@ -5,6 +5,7 @@ const { path, createTable } = require('../utils')
 const { INQUIRER, COMMANDS } = require('../config/command-list')
 const modularConfig = require('../../modular.config.json')
 
+
 /**
  * Modular Clone Config
  * @param {stirng} pwd 
@@ -32,20 +33,28 @@ const Config = async (pwd, cmd, env) => {
           type: INQUIRER.input,
           name: 'name',
           message: "Input path parent modular project name?",
-          default: () => pwd || modularConfig.parentModular
+          default: pwd || modularConfig.parentModular
         }
       ])
       ConfigEdit(project0.name)
       break
     case COMMANDS.ADD:
+      const pkgJSON = fs.readJsonSync(`${pwd}/package.json`)
       const project = await inquirer.prompt([
         {
           type: INQUIRER.input,
           name: 'name',
           message: "Input your project name?",
+          default: pkgJSON.name
+        },
+        {
+          type: INQUIRER.input,
+          name: 'path',
+          message: "Input your path name?",
+          default: pwd
         }
       ])
-      ConfigAdd(pwd, cmd, project.name)
+      ConfigAdd(project.path, cmd, project.name)
       break
     case COMMANDS.REMOVE:
       const project2 = await inquirer.prompt([
