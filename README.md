@@ -18,9 +18,9 @@ modular-tools config
 ### Remove Modular Config
 ![Add Child Modular](./src/assets/images/remove.gif)
 
-### Clone `Child Modular` to `Parent Modular`
+### Commit `Child Modular` to `Parent Modular`
 ```sh
-modular-tools clone
+modular-tools commit
 ```
 
 ### Clone Modular

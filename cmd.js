@@ -3,7 +3,7 @@
 const program = require('commander')
 const shell = require('shelljs')
 const packageJson = require('./package.json')
-const { Clone, Status } = require('./src/commands')
+const { Commit, Clone, Status } = require('./src/commands')
 
 let cmdValue
 let envValue
@@ -26,6 +26,7 @@ program.on('--help', function(){
   console.log('  Commands:')
   console.log('')
   console.log(`    ${CMD_NAME} clone`)
+  console.log(`    ${CMD_NAME} commit`)
   console.log(`    ${CMD_NAME} config`)
   console.log('')
 })
@@ -35,6 +36,9 @@ program.parse(process.argv)
 switch(cmdValue) {
   case 'clone':
     Clone(pwd, cmdValue, envValue)
+    break
+  case 'commit':
+    Commit(pwd, cmdValue, envValue)
     break
   case 'config':
     Status(pwd, cmdValue, envValue)

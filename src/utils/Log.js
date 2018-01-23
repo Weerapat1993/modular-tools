@@ -1,6 +1,15 @@
 const chalk = require('chalk')
 
 class Log {
+  constructor() {
+    this.git = {
+      add: (msg) => chalk.greenBright(msg),
+      copy: (msg) => chalk.cyanBright(msg),
+      merge: (msg) => chalk.yellowBright(msg),
+      delete: (msg) => chalk.redBright(msg),
+    }
+  }
+
   default(msg) {
     console.log(msg)
   }

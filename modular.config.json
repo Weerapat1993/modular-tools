@@ -12,6 +12,14 @@
     {
       "project_name": "Authentication",
       "path": "/Users/scale360/Desktop/Scale360/modular-authentication"
+    },
+    {
+      "project_name": "Social",
+      "path": "/Users/scale360/Desktop/Scale360/modular-social"
+    },
+    {
+      "project_name": "modular-tools",
+      "path": "/Applications/XAMPP/xamppfiles/htdocs/code/Github/modular-tools"
     }
   ]
 }

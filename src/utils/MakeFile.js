@@ -1,7 +1,6 @@
 const fs = require('fs')
 const fse = require('fs-extra')
 const shell = require('shelljs')
-const chalk = require('chalk')
 const createTable = require('./createTable')
 const Log = require('./Log')
 const { parentModular } = require('../../modular.config.json')
@@ -12,7 +11,11 @@ class MakeFile extends Log {
     this.cmd = cmd
     this.env = env || null
     this.pwd = pwd
-    this.table = createTable(['', 'CHILD MODULAR', 'PARENT MODULAR'])
+    this.table = createTable([
+      '', 
+      this.git.add('CHILD MODULAR'), 
+      this.git.add('PARENT MODULAR')
+    ])
     this.data = []
   }
 
@@ -45,7 +48,11 @@ class MakeFile extends Log {
     if (!fs.existsSync(dirSrc)) {
       this.createDirectory(pathName, true)
       fse.copySync(dirTemplate, dirSrc);
-      this.success(`copy folder ${templateName} to ./src${pathName} success.`)
+      this.data.push([
+        this.git.copy('C'),
+        this.git.copy(templateName.replace(this.pwd, '')),
+        this.git.copy(pathName.replace(parentModular, '')),
+      ])
     } else {
       this.error(`folder ./src${pathName} is exists.`)
     }
@@ -55,27 +62,25 @@ class MakeFile extends Log {
   copyFile(templateName, pathName) {
     if(!fs.existsSync(templateName)) {
       this.data.push([
-        chalk.red('D'),
-        chalk.red(templateName.replace(this.pwd, '')),
+        this.git.delete('D'),
+        this.git.delete(templateName.replace(this.pwd, '')),
         '',
       ])
       return this
     }
     if (!fs.existsSync(pathName)) {
       fs.copyFileSync(templateName, pathName)
-      // this.success(`[A] file ${templateName} to ${pathName} success.`)
       this.data.push([
-        chalk.green('A'),
-        chalk.green(templateName.replace(this.pwd, '')),
-        chalk.green(pathName.replace(parentModular, '')),
+        this.git.add('A'),
+        this.git.add(templateName.replace(this.pwd, '')),
+        this.git.add(pathName.replace(parentModular, '')),
       ])
     } else {
       fs.copyFileSync(templateName, pathName)
-      // this.warning(`[M] file ${templateName} to ${pathName} success.`)
       this.data.push([
-        chalk.yellowBright('M'),
-        chalk.yellowBright(templateName.replace(this.pwd, '')),
-        chalk.yellowBright(pathName.replace(parentModular, '')),
+        this.git.merge('M'),
+        this.git.merge(templateName.replace(this.pwd, '')),
+        this.git.merge(pathName.replace(parentModular, '')),
       ])
     }
     return this
@@ -85,7 +90,11 @@ class MakeFile extends Log {
     const dirSrc = pathName
     if (fs.existsSync(dirSrc)) {
       fse.removeSync(dirSrc)
-      this.success(`remove file ./src${pathName} success.`)
+      this.data.push([
+        this.git.delete('D'),
+        this.git.delete(''),
+        this.git.delete(pathName.replace(parentModular, '')),
+      ])
     }
     return this
   }
@@ -104,7 +113,14 @@ class MakeFile extends Log {
 
   status() {
     this.table.push(...this.data)
-    console.log('\n  Commit Status:\n')
+    console.log('\nSymbol:')
+    console.log(`
+  ${this.git.add('A = Add')}
+  ${this.git.copy('C = Copy')}
+  ${this.git.merge('M = Merge')}
+  ${this.git.delete('D = Delete')}
+    `)
+    console.log('Commit Status:\n')
     console.log(this.table.toString());
     console.log('')
   }
