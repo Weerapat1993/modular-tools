@@ -22,7 +22,7 @@ const Commit = async (pwd, cmd, env) => {
         })
         file.status()
       } else {
-        log.error('Error: Commit is not exists.')
+        log.error('Error: file commit is not exists.')
       }
     })
   })
