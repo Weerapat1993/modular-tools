@@ -5,7 +5,6 @@ const { path, createTable } = require('../utils')
 const { INQUIRER, COMMANDS } = require('../config/command-list')
 const modularConfig = require('../../modular.config.json')
 
-
 /**
  * Modular Clone Config
  * @param {stirng} pwd 
@@ -13,6 +12,7 @@ const modularConfig = require('../../modular.config.json')
  * @param {stirng} env 
  */
 const Config = async (pwd, cmd, env) => {
+  const pkgJSON = fs.readJsonSync(`${pwd}/package.json`)
   const choices = modularConfig.childModular.map(item => item.project_name)
   const answer = await inquirer.prompt([
     {
@@ -27,30 +27,35 @@ const Config = async (pwd, cmd, env) => {
   ])
   switch(answer.config_type) {
     case COMMANDS.EDIT:
-      console.log(`\n Old Path: ${chalk.blue(modularConfig.parentModular)}\n`)
+      console.log(`\n Old Path: ${chalk.blue(modularConfig.parentModular.path)}\n`)
       const project0 = await inquirer.prompt([
         {
           type: INQUIRER.input,
           name: 'name',
-          message: "Input path parent modular project name?",
-          default: pwd || modularConfig.parentModular
-        }
-      ])
-      ConfigEdit(project0.name)
-      break
-    case COMMANDS.ADD:
-      const pkgJSON = fs.readJsonSync(`${pwd}/package.json`)
-      const project = await inquirer.prompt([
-        {
-          type: INQUIRER.input,
-          name: 'name',
-          message: "Input your project name?",
+          message: "Input your `parent` project name?",
           default: pkgJSON.name
         },
         {
           type: INQUIRER.input,
           name: 'path',
-          message: "Input your path name?",
+          message: "Input your `parent` path name?",
+          default: pwd
+        }
+      ])
+      ConfigEdit(project0.path, project0.name)
+      break
+    case COMMANDS.ADD:
+      const project = await inquirer.prompt([
+        {
+          type: INQUIRER.input,
+          name: 'name',
+          message: "Input your `child` project name?",
+          default: pkgJSON.name
+        },
+        {
+          type: INQUIRER.input,
+          name: 'path',
+          message: "Input your `child` path name?",
           default: pwd
         }
       ])
@@ -76,14 +81,17 @@ const Config = async (pwd, cmd, env) => {
 
 /**
  * Modular Config Edit Project Name
- * @param {stirng} pwd 
- * @param {string} cmd 
- * @param {stirng} env 
+ * @param {stirng} pathName 
+ * @param {string} projectName 
+ * @return {void}
  */
-const ConfigEdit = async (pathName) => {
+const ConfigEdit = async (pathName, projectName) => {
   const fileJson = {
     ...modularConfig,
-    parentModular: pathName
+    parentModular: {
+      project_name: projectName,
+      path: pathName
+    }
   }
   fs.writeFileSync(path('/modular.config.json'), JSON.stringify(fileJson, null, '  '))
 }
@@ -154,7 +162,7 @@ const ModularTable = (data) => {
     ]
   })
   tableModulars.push(...modularStatus)
-  console.log(chalk.blue(`\nParent Modular: ${modularConfig.parentModular}\n`));
+  console.log(chalk.blue(`\nParent Modular: ${modularConfig.parentModular.path}\n`));
   console.log('  Modular Config Status:\n')
   console.log(tableModulars.toString());
   console.log('')

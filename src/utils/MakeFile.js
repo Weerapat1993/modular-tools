@@ -1,9 +1,12 @@
 const fs = require('fs')
 const fse = require('fs-extra')
+const chalk = require('chalk')
 const shell = require('shelljs')
 const createTable = require('./createTable')
 const Log = require('./Log')
+const { childName } = require('./findProject')
 const { parentModular } = require('../../modular.config.json')
+const { path } = parentModular
 
 class MakeFile extends Log {
   constructor(cmd, env, pwd) {
@@ -13,8 +16,8 @@ class MakeFile extends Log {
     this.pwd = pwd
     this.table = createTable([
       '', 
-      this.git.add('CHILD MODULAR'), 
-      this.git.add('PARENT MODULAR')
+      this.git.add(childName(pwd)),
+      this.git.add(parentModular.project_name)
     ])
     this.data = []
   }
@@ -51,7 +54,7 @@ class MakeFile extends Log {
       this.data.push([
         this.git.copy('C'),
         this.git.copy(templateName.replace(this.pwd, '')),
-        this.git.copy(pathName.replace(parentModular, '')),
+        this.git.copy(pathName.replace(path, '')),
       ])
     } else {
       this.error(`folder ./src${pathName} is exists.`)
@@ -73,14 +76,14 @@ class MakeFile extends Log {
       this.data.push([
         this.git.add('A'),
         this.git.add(templateName.replace(this.pwd, '')),
-        this.git.add(pathName.replace(parentModular, '')),
+        this.git.add(pathName.replace(path, '')),
       ])
     } else {
       fs.copyFileSync(templateName, pathName)
       this.data.push([
         this.git.merge('M'),
         this.git.merge(templateName.replace(this.pwd, '')),
-        this.git.merge(pathName.replace(parentModular, '')),
+        this.git.merge(pathName.replace(path, '')),
       ])
     }
     return this
@@ -93,7 +96,7 @@ class MakeFile extends Log {
       this.data.push([
         this.git.delete('D'),
         this.git.delete(''),
-        this.git.delete(pathName.replace(parentModular, '')),
+        this.git.delete(pathName.replace(path, '')),
       ])
     }
     return this

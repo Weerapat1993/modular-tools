@@ -17,4 +17,15 @@ const findProject = (pwd, callback) => {
   }
 }
 
-module.exports = findProject
+/**
+ * Find Child Modular Name
+ * @param {string} pwd
+ * @return {string}
+ */
+const childName = (pwd) => {
+  const childData = modularJSON.childModular.filter(item => item.path === pwd)
+  return childData.length ? childData[0].project_name : chalk.black('Not Found Project')
+}
+
+exports.findProject = findProject
+exports.childName = childName

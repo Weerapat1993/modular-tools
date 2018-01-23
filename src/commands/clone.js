@@ -20,8 +20,8 @@ const Clone = async (pwd, cmd, env) => {
     if(confirm.isConfirm) {
       const file = new MakeFile(cmd, env, pwd)
       const pwdSrc = `${pwd}/src`
-      const projectSrc = `${parent}/node_modules/${child.project_name}/src`
-
+      const projectSrc = `${parent.path}/node_modules/${child.project_name}/src`
+      
       file
         .removeFolder(projectSrc)
         .copyFolderTemplate(pwdSrc, projectSrc)

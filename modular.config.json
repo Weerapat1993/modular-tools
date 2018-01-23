@@ -1,5 +1,8 @@
 {
-  "parentModular": "/Users/scale360/Desktop/Scale360/shopbank-uk-mobile",
+  "parentModular": {
+    "project_name": "ShopbankUkMobile",
+    "path": "/Applications/XAMPP/xamppfiles/htdocs/Scale360/shopbank-uk-mobile"
+  },
   "childModular": [
     {
       "project_name": "MarketPlace",
@@ -19,7 +22,7 @@
     },
     {
       "project_name": "modular-tools",
-      "path": "/Applications/XAMPP/xamppfiles/htdocs/code/Github/modular-tools"
+      "path": "/Applications/XAMPP/xamppfiles/htdocs/Github/modular-tools"
     }
   ]
 }
