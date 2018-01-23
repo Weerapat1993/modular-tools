@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "bin": {
-    "modular-tools": "./cmd.js"
+    "modular": "./cmd.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

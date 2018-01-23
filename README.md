@@ -9,7 +9,7 @@ npm install -g
 
 ### Modular Config Project
 ```sh
-modular-tools config
+modular config
 ```
 
 ### Add Modular Config
@@ -18,10 +18,20 @@ modular-tools config
 ### Remove Modular Config
 ![Add Child Modular](./src/assets/images/remove.gif)
 
-### Commit `Child Modular` to `Parent Modular`
+### Commit Modular
+- Copy File git diff in `/src` to `Parent Modular`
+
 ```sh
-modular-tools commit
+modular commit
 ```
 
+![Copy File Child Modular](./src/assets/images/commit.gif)
+
 ### Clone Modular
-![Add Child Modular](./src/assets/images/clone.gif)
+- Copy Folder `/src` to `Parent Modular`
+
+```sh
+modular clone
+```
+
+![Copy Folder Child Modular](./src/assets/images/clone.gif)
