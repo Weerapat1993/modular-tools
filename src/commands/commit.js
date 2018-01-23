@@ -10,11 +10,11 @@ const log = new Log()
  */
 const Commit = async (pwd, cmd, env) => {
   shell.exec('git status -s -u src', { async: true, silent: true }, (code, stdout, stderr) => {
-    findProject(pwd, (data, projectPath) => {
+    findProject(pwd, (child, parent) => {
       const dataArray = stdout.split('\n')
       const dataSrc = dataArray.filter(item => item.trim() !== '').map(item => item.split(' ').reverse()[0] )
       const childModular = dataSrc.map(item => `${pwd}/${item}`)
-      const parentModular = dataSrc.map(item => `${projectPath}/node_modules/${data.project_name}/${item}`)
+      const parentModular = dataSrc.map(item => `${parent}/node_modules/${child.project_name}/${item}`)
       if(dataSrc.length) {
         const file = new MakeFile(cmd, env, pwd)
         childModular.forEach((item, i) => {

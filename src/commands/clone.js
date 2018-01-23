@@ -9,7 +9,7 @@ const { findProject, MakeFile } = require('../utils')
  * @param {stirng} env 
  */
 const Clone = async (pwd, cmd, env) => {
-  findProject(pwd, async (data, projectPath) => {
+  findProject(pwd, async (child, parent) => {
     const confirm = await inquirer.prompt([
       {
         type: INQUIRER.confirm,
@@ -20,7 +20,7 @@ const Clone = async (pwd, cmd, env) => {
     if(confirm.isConfirm) {
       const file = new MakeFile(cmd, env, pwd)
       const pwdSrc = `${pwd}/src`
-      const projectSrc = `${projectPath}/node_modules/${data.project_name}/src`
+      const projectSrc = `${parent}/node_modules/${child.project_name}/src`
 
       file
         .removeFolder(projectSrc)
