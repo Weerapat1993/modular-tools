@@ -33,13 +33,29 @@ const Config = async (pwd, cmd, env) => {
           type: INQUIRER.input,
           name: 'name',
           message: "Input your `parent` project name?",
-          default: pkgJSON.name
+          default: pkgJSON.name,
+          validate: (value) => {
+            const childs = modularConfig.childModular
+            const child = childs.filter(item => item.project_name === value)
+            if(!child.length) {
+              return true
+            }
+            return `Parent project name ${value} is exists.`
+          }
         },
         {
           type: INQUIRER.input,
           name: 'path',
           message: "Input your `parent` path name?",
-          default: pwd
+          default: pwd,
+          validate: (value) => {
+            const childs = modularConfig.childModular
+            const child = childs.filter(item => item.path === value)
+            if(!child.length) {
+              return true
+            }
+            return `Parent project path is exists.`
+          }
         }
       ])
       ConfigEdit(project0.path, project0.name)
@@ -50,13 +66,29 @@ const Config = async (pwd, cmd, env) => {
           type: INQUIRER.input,
           name: 'name',
           message: "Input your `child` project name?",
-          default: pkgJSON.name
+          default: pkgJSON.name,
+          validate: (value) => {
+            const childs = modularConfig.childModular
+            const child = childs.filter(item => item.project_name === value)
+            if(!child.length) {
+              return true
+            }
+            return `Child project name ${value} is exists.`
+          }
         },
         {
           type: INQUIRER.input,
           name: 'path',
           message: "Input your `child` path name?",
-          default: pwd
+          default: pwd,
+          validate: (value) => {
+            const childs = modularConfig.childModular
+            const child = childs.filter(item => item.path === value)
+            if(!child.length) {
+              return true
+            }
+            return `Child project path is exists.`
+          }
         }
       ])
       ConfigAdd(project.path, cmd, project.name)
