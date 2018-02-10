@@ -25,9 +25,10 @@ program.on('--help', function(){
   console.log('')
   console.log('  Commands:')
   console.log('')
-  console.log(`    ${CMD_NAME} clone`)
-  console.log(`    ${CMD_NAME} commit`)
+  console.log(`    ${CMD_NAME} init`)
   console.log(`    ${CMD_NAME} config`)
+  console.log(`    ${CMD_NAME} commit`)
+  console.log(`    ${CMD_NAME} clone`)
   console.log('')
 })
 
