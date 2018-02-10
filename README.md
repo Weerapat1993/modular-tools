@@ -7,6 +7,11 @@ cd modular-tools
 npm install -g
 ```
 
+### Create New Modular Project
+```sh
+modular init <project_name>
+```
+
 ### Modular Config Project
 ```sh
 modular config
