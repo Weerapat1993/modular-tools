@@ -18,9 +18,10 @@ const Clone = async (pwd, cmd, env) => {
       }
     ])
     if(confirm.isConfirm) {
+      const path = child.project_name === 'mascot' ? '/release' : '/src'
       const file = new MakeFile(cmd, env, pwd)
-      const pwdSrc = `${pwd}/src`
-      const projectSrc = `${parent.path}/node_modules/${child.project_name}/src`
+      const pwdSrc = `${pwd}${path}`
+      const projectSrc = `${parent.path}/node_modules/${child.project_name}${path}`
       
       file
         .removeFolder(projectSrc)
