@@ -1,5 +1,30 @@
 # Modular Tools
 
+## Modular Standard Style Guide (Incomplete)
+
+## Table of Contents
+* [Folder Structure](./docs/folder-structure.md)
+  * [Common](./docs/folder-structure.md#common)
+  * [Features](./docs/folder-structure.md#features)
+  * [Scenes](./docs/folder-structure.md#scenes)
+  * [Utils](./docs/folder-structure.md#utils)
+* [Constants](./docs/constants.md)
+  * [Endpoints](./docs/constants.md#1-endpoints)
+* [Component](./docs/component.md)
+  * [PropTypes](./docs/component.md#1-proptypes)
+  * [Constructor](./docs/component.md#2-constructor)
+  * [Bind This](./docs/component.md#3-bind-this)
+* [Container](./docs/container.md)
+  * [mapStateToProps](./docs/container.md#1-mapstatetoprops)
+  * [mapDispatchToProps](./docs/container.md#2-mapdispatchtoprops)
+* [Actions](./docs/actions.md)
+* [Reducer](./docs/reducer.md)
+  * [State in Reducer](./docs/reducer.md#1-state-in-reducer)
+  * [Reducer Function](./docs/reducer.md#2-reducer-function)
+  * [Util Class Reducer](./docs/reducer.md#3-util-class-reducer)
+* [JSDoc](./docs/jsdoc.md)
+
+
 ### How to use
 ```
 git clone https://github.com/Weerapat1993/modular-tools.git
