@@ -43,10 +43,10 @@ modular config
 ```
 
 ### Add Modular Config
-![Add Child Modular](./src/assets/images/add.gif)
+![Add Child Modular](./app/assets/images/add.gif)
 
 ### Remove Modular Config
-![Add Child Modular](./src/assets/images/remove.gif)
+![Add Child Modular](./app/assets/images/remove.gif)
 
 ### Commit Modular
 - Copy File git diff in `/src` to `Parent Modular`
@@ -55,7 +55,7 @@ modular config
 modular commit
 ```
 
-![Copy File Child Modular](./src/assets/images/commit.gif)
+![Copy File Child Modular](./app/assets/images/commit.gif)
 
 ### Clone Modular
 - Copy Folder `/src` to `Parent Modular`
@@ -64,4 +64,4 @@ modular commit
 modular clone
 ```
 
-![Copy Folder Child Modular](./src/assets/images/clone.gif)
+![Copy Folder Child Modular](./app/assets/images/clone.gif)
