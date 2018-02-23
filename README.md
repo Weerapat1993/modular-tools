@@ -17,6 +17,7 @@
 * [Container](./docs/container.md)
   * [mapStateToProps](./docs/container.md#1-mapstatetoprops)
   * [mapDispatchToProps](./docs/container.md#2-mapdispatchtoprops)
+  * [Use Connector](#./docs/container.md#3-use-connector)
 * [Actions](./docs/actions.md)
 * [Reducer](./docs/reducer.md)
   * [State in Reducer](./docs/reducer.md#1-state-in-reducer)
