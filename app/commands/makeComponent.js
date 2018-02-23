@@ -12,9 +12,20 @@ const makeComponent = (pwd, cmd, env) => {
     .createDirectory('')
     .createDirectory('/components')
     .createDirectory(`/components/${envPascalCase}`)
-    .createFile(`/components/${envPascalCase}/index.js`, '')
+    .createFile(`/components/${envPascalCase}/index.js`, `import ${envPascalCase} from './${envPascalCase}'
+
+export { ${envPascalCase} }
+`)
     .createFile(`/components/${envPascalCase}/${envPascalCase}.js`, '')
-    .createFile(`/components/${envPascalCase}/styles.js`, '');
+    .createFile(`/components/${envPascalCase}/styles.js`, `
+const styles = {
+  container: {
+
+  },
+}
+
+export default styles
+`);
 
   log.default('\nPlease add text info file ./src/components/index.js\n');
   log.success(`export { ${envPascalCase} } from './${envPascalCase}'\n`);

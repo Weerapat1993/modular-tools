@@ -5,6 +5,7 @@ const Status = require('./status');
 const Init = require('./init');
 const MakeFeature = require('./makeFeature');
 const MakeComponent = require('./makeComponent');
+const MakeCommon = require('./makeCommon');
 const MakeUtil = require('./makeUtil');
 
 
@@ -18,3 +19,4 @@ exports.Init = Init;
 exports.MakeFeature = MakeFeature;
 exports.MakeComponent = MakeComponent;
 exports.MakeUtil = MakeUtil;
+exports.MakeCommon = MakeCommon;

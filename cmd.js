@@ -9,9 +9,11 @@ const {
   Status,
   Init,
   MakeFeature,
+  MakeCommon,
   MakeComponent,
   MakeUtil,
 } = require('./app/commands');
+const { checkName } = require('./app/utils');
 
 let cmdValue;
 let envValue;
@@ -37,6 +39,7 @@ program.on('--help', () => {
   console.log(`    ${CMD_NAME} config`);
   console.log(`    ${CMD_NAME} commit`);
   console.log(`    ${CMD_NAME} clone`);
+  console.log(`    ${CMD_NAME} make:common`);
   console.log(`    ${CMD_NAME} make:component`);
   console.log(`    ${CMD_NAME} make:feature`);
   console.log(`    ${CMD_NAME} make:util`);
@@ -58,19 +61,20 @@ switch (cmdValue) {
   case 'config':
     Status(pwd, cmdValue, envValue);
     break;
+  case 'make:common':
+    checkName(envValue, () => {
+      MakeCommon(pwd, cmdValue, envValue);
+    });
+    break;
   case 'make:component':
-    if (envValue) {
+    checkName(envValue, () => {
       MakeComponent(pwd, cmdValue, envValue);
-    } else {
-      console.log('Error');
-    }
+    });
     break;
   case 'make:feature':
-    if (envValue) {
+    checkName(envValue, () => {
       MakeFeature(pwd, cmdValue, envValue);
-    } else {
-      console.log('Error');
-    }
+    });
     break;
   case 'make:util':
     if (envValue) {

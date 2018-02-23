@@ -6,7 +6,6 @@ const makeUtil = (pwd, cmd, env) => {
   const file = new MakeFile2(cmd, env, pwd);
   const log = new Log();
   const envCamelCase = Case.camel(env);
-  const envPascalCase = Case.pascal(env);
   const envKebab = Case.kebab(env);
 
   file
