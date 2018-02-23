@@ -50,35 +50,12 @@ features
 │   │   │   ├── index.js
 │   │   │   ├── productDetailActionTypes.js
 │   │   │   ├── productDetailActions.js
+│   │   │   ├── productDetailEndpoints.js
 │   │   │   ├── productDetailConnector.js
 │   │   │   ├── productDetailReducer.js
 │   │   │   ├── productDetailSelector.js
 │   │   │   └── productDetailUtils.js
 │   │   └── index.js
-│   ├── list
-│   │   ├── ProductListContainer.js
-│   │   ├── ProductListDescription.js
-│   │   ├── index.js
-│   │   ├── productListActionTypes.js
-│   │   ├── productListActions.js
-│   │   ├── productListConnector.js
-│   │   ├── productListReducer.js
-│   │   ├── productListSelector.js
-│   │   ├── productListUtils.js
-│   │   └── styles.js
-│   └── index.js
-├── shop
-│   ├── components
-│   │   ├── ShopContainer.js
-│   │   ├── ShopContent.js
-│   │   ├── styles.js
-│   │   └── index.js
-│   ├── redux
-│   │   ├── index.js
-│   │   ├── shopActionTypes.js
-│   │   ├── shopActions.js
-│   │   ├── shopFunction.js
-│   │   └── shopReducer.js
 │   └── index.js
 └── index.js
 ```

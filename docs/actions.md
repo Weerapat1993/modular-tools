@@ -24,7 +24,10 @@ export const fetchFeed = () => (dispatch, getState) => {
   dispatch(fetchFeedRequest())
   return axios({
     method: 'GET',
-    url: API_ENDPOINT_GET_FEED,
+    url: API_ENDPOINT_GET_FEED(),
+    headers: {
+      Authentication: token
+    }
   })
     .then(res => dispatch(fetchFeedSuccess(res.data.data)))
     .catch(error => dispatch(fetchFeedFailure(error)))

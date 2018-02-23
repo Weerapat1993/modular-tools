@@ -105,6 +105,39 @@ export const feedReducer = (state = initialState, action) => {
 }
 ```
 
+**[New] Class Redcuer (Best)**
+```js
+import { Reducer } from '../utils'
+
+// InitalState
+const initialState = {
+  isFetching: false,
+  isReload: true,
+  error: '',
+  data: [],
+}
+
+class FeedReducer extends Reducer {
+  getState() {
+    const { type, data } = this.action
+    switch(type) {
+      case FETCH_FEED.REQUEST:
+        return this.getRequest()
+      case FETCH_FEED.SUCCESS:
+        return this.fetchFeedSuccess({ data })
+      case FETCH_FEED.FAILURE:
+        return this.getFailure()
+      default:
+        return this.state
+    }
+  }
+}
+
+/** @type {initialState} */
+export const feedReducer = classReducer(FeedReducer, initialState)
+```
+
+
 ### 3. Util Class Reducer
 
 * [Reducer.js](../src/utils/Reducer/Reducer.js)
@@ -112,14 +145,16 @@ export const feedReducer = (state = initialState, action) => {
   * [getRequest()](#)
   * [getSuccess()](#)
   * [getFailure()](#)
-* [NormalizeReducer.js](../src/utils/Reducer/NormalizeReducer.js)
+* [NormalizeReducer.js](#)
   * [setState()](#)
+  * [getState()](#)
   * [setStateWithKey()](#)
   * [getRequestWithKey()](#)
   * [getSuccessWithKey()](#)
   * [getFailureWithKey()](#)
-* [FullStackReducer.js](../src/utils/Reducer/FullStackReducer.js)
+* [FullStackReducer.js](#)
   * [setState()](#)
+  * [getState()](#)
   * [setStateWithKey()](#)
   * [getRequest()](#)
   * [getSuccess()](#)
