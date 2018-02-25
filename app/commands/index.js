@@ -7,6 +7,8 @@ const MakeFeature = require('./makeFeature');
 const MakeComponent = require('./makeComponent');
 const MakeCommon = require('./makeCommon');
 const MakeUtil = require('./makeUtil');
+const MakeScene = require('./makeScene');
+const MakePage = require('./makePage');
 
 
 exports.ConfigAdd = ConfigAdd;
@@ -20,3 +22,5 @@ exports.MakeFeature = MakeFeature;
 exports.MakeComponent = MakeComponent;
 exports.MakeUtil = MakeUtil;
 exports.MakeCommon = MakeCommon;
+exports.MakeScene = MakeScene;
+exports.MakePage = MakePage;

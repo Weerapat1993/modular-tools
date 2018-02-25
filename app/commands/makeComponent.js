@@ -1,5 +1,6 @@
 const Case = require('case');
 const { MakeFile2, Log } = require('../utils');
+const Files = require('../assets/files');
 
 // Make Component Command
 const makeComponent = (pwd, cmd, env) => {
@@ -16,7 +17,7 @@ const makeComponent = (pwd, cmd, env) => {
 
 export { ${envPascalCase} }
 `)
-    .createFile(`/components/${envPascalCase}/${envPascalCase}.js`, '')
+    .createFile(`/components/${envPascalCase}/${envPascalCase}.js`, Files.componentText(envPascalCase))
     .createFile(`/components/${envPascalCase}/styles.js`, `
 const styles = {
   container: {

@@ -12,6 +12,8 @@ const {
   MakeCommon,
   MakeComponent,
   MakeUtil,
+  MakeScene,
+  MakePage,
 } = require('./app/commands');
 const { checkName } = require('./app/utils');
 
@@ -42,6 +44,8 @@ program.on('--help', () => {
   console.log(`    ${CMD_NAME} make:common`);
   console.log(`    ${CMD_NAME} make:component`);
   console.log(`    ${CMD_NAME} make:feature`);
+  console.log(`    ${CMD_NAME} make:page`);
+  console.log(`    ${CMD_NAME} make:scene`);
   console.log(`    ${CMD_NAME} make:util`);
   console.log('');
 });
@@ -74,6 +78,16 @@ switch (cmdValue) {
   case 'make:feature':
     checkName(envValue, () => {
       MakeFeature(pwd, cmdValue, envValue);
+    });
+    break;
+  case 'make:page':
+    checkName(envValue, () => {
+      MakePage(pwd, cmdValue, envValue);
+    });
+    break;
+  case 'make:scene':
+    checkName(envValue, () => {
+      MakeScene(pwd, cmdValue, envValue);
     });
     break;
   case 'make:util':

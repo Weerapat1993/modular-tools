@@ -1,5 +1,6 @@
 const Case = require('case');
 const { MakeFile2, Log } = require('../utils');
+const Files = require('../assets/files');
 
 // Make Component Command
 const makeCommon = (pwd, cmd, env) => {
@@ -16,7 +17,7 @@ const makeCommon = (pwd, cmd, env) => {
 
 export { ${envPascalCase} }
 `)
-    .createFile(`/common/${envPascalCase}/${envPascalCase}.js`, '')
+    .createFile(`/common/${envPascalCase}/${envPascalCase}.js`, Files.componentText(envPascalCase))
     .createFile(`/common/${envPascalCase}/styles.js`, `
 const styles = {
   container: {
@@ -30,7 +31,5 @@ export default styles
   log.default('\nPlease add text info file ./src/common/index.js\n');
   log.success(`export { ${envPascalCase} } from './${envPascalCase}'\n`);
 };
-
-const commonIndex = 
 
 module.exports = makeCommon;
