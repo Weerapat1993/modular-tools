@@ -81,3 +81,13 @@ export const fetch${Case.pascal(env)}List = () => (dispatch) => {
     .catch(error => dispatch(fetch${Case.pascal(env)}ListFailure(error)))
 }
 `;
+
+exports.stylesText = () => `
+const styles = {
+  container: {
+
+  },
+}
+
+export default styles
+`;

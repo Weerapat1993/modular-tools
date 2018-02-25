@@ -3,6 +3,7 @@ const {
   connectorText,
   reducerText,
   actionsText,
+  stylesText,
 } = require('./file');
 
 module.exports = {
@@ -10,4 +11,5 @@ module.exports = {
   connectorText,
   reducerText,
   actionsText,
+  stylesText,
 };

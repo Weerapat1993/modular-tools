@@ -23,7 +23,7 @@ import ${envPascalCase}Container from './${envPascalCase}Container'
 
 export { ${envPascalCase}Container }
 `)
-    .createFile(`/features/${envCamelCase}/components/styles.js`, '')
+    .createFile(`/features/${envCamelCase}/components/styles.js`, Files.stylesText())
     .createFile(`/features/${envCamelCase}/components/${envPascalCase}Container.js`, Files.componentText(`${envPascalCase}Container`))
     .createFile(`/features/${envCamelCase}/redux/index.js`, `
 export { with${envPascalCase} } from './${envCamelCase}Connector'

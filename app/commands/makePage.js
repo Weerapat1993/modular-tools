@@ -23,7 +23,7 @@ export default {
 }
 `)
     .createFile(`/pages/${envCamelCase}/${envPascalCase}Home.js`, Files.componentText(`${envPascalCase}Home`))
-    .createFile(`/pages/${envCamelCase}/${envPascalCase}Create.js`, Files.componentText(`${envPascalCase}Create`))
+    .createFile(`/pages/${envCamelCase}/${envPascalCase}Create.js`, Files.componentText(`${envPascalCase}Create`));
 
   log.default('\nPlease add text info file ./src/pages/index.js\n');
   log.success(`export ${envPascalCase} from './${envCamelCase}'\n`);
