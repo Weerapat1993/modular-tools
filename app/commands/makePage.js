@@ -13,14 +13,20 @@ const makePage = (pwd, cmd, env) => {
     .createDirectory('')
     .createDirectory('/pages')
     .createDirectory(`/pages/${envCamelCase}`)
-    .createFile(`/pages/${envCamelCase}/index.js`, `import ${envPascalCase} from './${envCamelCase}'
+    .createFile(`/pages/${envCamelCase}/index.js`, `
+import ${envPascalCase}Home from './${envPascalCase}Home'
+import ${envPascalCase}Create from './${envPascalCase}Create'
 
-export { ${envPascalCase} }
+export default {
+  Home: ${envPascalCase}Home,
+  Create: ${envPascalCase}Create,
+}
 `)
-    .createFile(`/pages/${envCamelCase}/${envPascalCase}.js`, Files.componentText(envPascalCase));
+    .createFile(`/pages/${envCamelCase}/${envPascalCase}Home.js`, Files.componentText(`${envPascalCase}Home`))
+    .createFile(`/pages/${envCamelCase}/${envPascalCase}Create.js`, Files.componentText(`${envPascalCase}Create`))
 
   log.default('\nPlease add text info file ./src/pages/index.js\n');
-  log.success(`export { ${envPascalCase} } from './${envCamelCase}'\n`);
+  log.success(`export ${envPascalCase} from './${envCamelCase}'\n`);
 };
 
 module.exports = makePage;

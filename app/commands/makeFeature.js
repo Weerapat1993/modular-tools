@@ -19,16 +19,11 @@ const makeFeature = (pwd, cmd, env) => {
 export * from './components'
 export * from './redux'`)
     .createFile(`/features/${envCamelCase}/components/index.js`, `
-import ${envPascalCase}Home from './${envPascalCase}Home'
-import ${envPascalCase}Create from './${envPascalCase}Create'
+import ${envPascalCase}Container from './${envPascalCase}Container'
 
-export default {
-  Home: ${envPascalCase}Home,
-  Create: ${envPascalCase}Create,
-}
+export { ${envPascalCase}Container }
 `)
-    .createFile(`/features/${envCamelCase}/components/${envPascalCase}Home.js`, Files.componentText(`${envPascalCase}Home`))
-    .createFile(`/features/${envCamelCase}/components/${envPascalCase}Create.js`, Files.componentText(`${envPascalCase}Home`))
+    .createFile(`/features/${envCamelCase}/components/${envPascalCase}Container.js`, Files.componentText(`${envPascalCase}Container`))
     .createFile(`/features/${envCamelCase}/redux/index.js`, `export { with${envPascalCase} } from './${envCamelCase}Connector'`)
     .createFile(`/features/${envCamelCase}/redux/${envCamelCase}Actions.js`, '')
     .createFile(`/features/${envCamelCase}/redux/${envCamelCase}ActionTypes.js`, '')
@@ -39,7 +34,7 @@ export default {
     .createFile(`/features/${envCamelCase}/redux/${envCamelCase}Utils.js`, '');
 
   log.default('\nPlease add text info file ./src/views/features/index.js\n');
-  log.success(`export { ${envPascalCase}Container } from './${envCamelCase}'\n`);
+  log.success(`export * from './${envCamelCase}'\n`);
 };
 
 module.exports = makeFeature;
