@@ -23,13 +23,17 @@ import ${envPascalCase}Container from './${envPascalCase}Container'
 
 export { ${envPascalCase}Container }
 `)
+    .createFile(`/features/${envCamelCase}/components/styles.js`, '')
     .createFile(`/features/${envCamelCase}/components/${envPascalCase}Container.js`, Files.componentText(`${envPascalCase}Container`))
-    .createFile(`/features/${envCamelCase}/redux/index.js`, `export { with${envPascalCase} } from './${envCamelCase}Connector'`)
-    .createFile(`/features/${envCamelCase}/redux/${envCamelCase}Actions.js`, '')
+    .createFile(`/features/${envCamelCase}/redux/index.js`, `
+export { with${envPascalCase} } from './${envCamelCase}Connector'
+export { ${envCamelCase}Reducer, ${envPascalCase} } from './${envCamelCase}Reducer'
+`)
+    .createFile(`/features/${envCamelCase}/redux/${envCamelCase}Actions.js`, Files.actionsText(env))
     .createFile(`/features/${envCamelCase}/redux/${envCamelCase}ActionTypes.js`, '')
     .createFile(`/features/${envCamelCase}/redux/${envCamelCase}Connector.js`, Files.connectorText(env))
     .createFile(`/features/${envCamelCase}/redux/${envCamelCase}Endpoints.js`, '')
-    .createFile(`/features/${envCamelCase}/redux/${envCamelCase}Reducer.js`, '')
+    .createFile(`/features/${envCamelCase}/redux/${envCamelCase}Reducer.js`, Files.reducerText(env))
     .createFile(`/features/${envCamelCase}/redux/${envCamelCase}Selector.js`, '')
     .createFile(`/features/${envCamelCase}/redux/${envCamelCase}Utils.js`, '');
 

@@ -1,6 +1,13 @@
-const { componentText, connectorText } = require('./file');
+const {
+  componentText,
+  connectorText,
+  reducerText,
+  actionsText,
+} = require('./file');
 
 module.exports = {
   componentText,
   connectorText,
+  reducerText,
+  actionsText,
 };
