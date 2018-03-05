@@ -33,9 +33,12 @@ cd modular-tools
 npm install -g
 ```
 
-### Create New Modular Project
+### Create File in Project
 ```sh
-modular init <project_name>
+modular make:common [name]
+modular make:feature [name]
+modular make:scene [name]
+modular make:util [name]
 ```
 
 ### Modular Config Project

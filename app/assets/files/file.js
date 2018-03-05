@@ -16,7 +16,7 @@ export default ${name}
 exports.connectorText = env => `import { connect } from 'react-redux'
 import { ${Case.pascal(env)} } from './${Case.camel(env)}Reducer'
 
-export const with${Case.pascal(env)} = (WrapperComponent) => (
+export const with${Case.pascal(env)} = (
   connect (
     (state) => ({
       ${Case.camel(env)}: ${Case.pascal(env)}(state),
@@ -24,7 +24,7 @@ export const with${Case.pascal(env)} = (WrapperComponent) => (
     {
 
     }
-  )(WrapperComponent)
+  )
 )
 `;
 
@@ -65,7 +65,9 @@ export const ${Case.camel(env)}Reducer = (state = initialState, action) => {
 export const ${Case.pascal(env)} = (state) => state.${Case.camel(env)}
 `;
 
-exports.actionsText = env => `import { FETCH_${Case.upper(env)}_LIST } from './${Case.camel(env)}ActionTypes'
+exports.actionsText = env => `import axios from 'axios'
+import { FETCH_${Case.upper(env)}_LIST } from './${Case.camel(env)}ActionTypes'
+import { API_ENDPOINT_${Case.upper(env)}_LIST } from './${Case.camel(env)}Endpoint'
 
 export const fetch${Case.pascal(env)}ListRequest = () => ({ type: FETCH_${Case.upper(env)}_LIST.REQUEST }) 
 export const fetch${Case.pascal(env)}ListSuccess = (data) => ({ type: FETCH_${Case.upper(env)}_LIST.SUCCESS, data }) 

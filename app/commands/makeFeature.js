@@ -30,11 +30,34 @@ export { with${envPascalCase} } from './${envCamelCase}Connector'
 export { ${envCamelCase}Reducer, ${envPascalCase} } from './${envCamelCase}Reducer'
 `)
     .createFile(`/features/${envCamelCase}/redux/${envCamelCase}Actions.js`, Files.actionsText(env))
-    .createFile(`/features/${envCamelCase}/redux/${envCamelCase}ActionTypes.js`, '')
+    .createFile(`/features/${envCamelCase}/redux/${envCamelCase}ActionTypes.js`, `
+export const FETCH_${Case.upper(env)}_LIST = asyncActionType('FETCH_${Case.upper(env)}_LIST')
+`)
     .createFile(`/features/${envCamelCase}/redux/${envCamelCase}Connector.js`, Files.connectorText(env))
-    .createFile(`/features/${envCamelCase}/redux/${envCamelCase}Endpoints.js`, '')
+    .createFile(`/features/${envCamelCase}/redux/${envCamelCase}Endpoints.js`, `
+export const API_ENDPOINT_${Case.upper(env)}_LIST = () => API_ENDPOINT('/${Case.upper(env)}')`)
     .createFile(`/features/${envCamelCase}/redux/${envCamelCase}Reducer.js`, Files.reducerText(env))
-    .createFile(`/features/${envCamelCase}/redux/${envCamelCase}Selector.js`, '')
+    .createFile(`/features/${envCamelCase}/redux/${envCamelCase}Selector.js`, `import _ from 'lodash'
+
+const defaultState = {
+  isFetching: false,
+  isReload: true,
+  data: {},
+  error: '',
+}
+
+/**
+ * Select ${envPascalCase} With Key
+ * @param {Object} state 
+ * @param {string} key
+ * @return {defaultState} 
+ */
+export const select${envPascalCase}WithKey = (state, key) => {
+    const defaultStateInline = defaultState
+    const article = _.get(state, key, defaultStateInline)
+    return article
+}
+`)
     .createFile(`/features/${envCamelCase}/redux/${envCamelCase}Utils.js`, '');
 
   log.default('\nPlease add text info file ./src/views/features/index.js\n');

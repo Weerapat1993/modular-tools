@@ -3,5 +3,14 @@
     "project_name": "ShopbankUkMobile",
     "path": "/Users/weerapat/Desktop/Scale360/shopbank-uk-mobile"
   },
-  "childModular": []
+  "childModular": [
+    {
+      "project_name": "MarketPlace",
+      "path": "/Users/weerapat/Desktop/Scale360/modular-marketplace"
+    },
+    {
+      "project_name": "mascot",
+      "path": "/Users/weerapat/Desktop/Scale360/mascot"
+    }
+  ]
 }
