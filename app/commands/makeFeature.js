@@ -28,6 +28,7 @@ export { ${envPascalCase}Container }
     .createFile(`/features/${envCamelCase}/redux/index.js`, `
 export { with${envPascalCase} } from './${envCamelCase}Connector'
 export { ${envCamelCase}Reducer, ${envPascalCase} } from './${envCamelCase}Reducer'
+export { select${envPascalCase}WithKey } from './${envCamelCase}Selector'
 `)
     .createFile(`/features/${envCamelCase}/redux/${envCamelCase}Actions.js`, Files.actionsText(env))
     .createFile(`/features/${envCamelCase}/redux/${envCamelCase}ActionTypes.js`, `
