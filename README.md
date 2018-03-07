@@ -10,6 +10,7 @@
   * [Utils](./docs/folder-structure.md#utils)
 * [Constants](./docs/constants.md)
   * [Endpoints](./docs/constants.md#1-endpoints)
+  * [Action Types](./docs/constants.md#2-action-types)
 * [Component](./docs/component.md)
   * [PropTypes](./docs/component.md#1-proptypes)
   * [Constructor](./docs/component.md#2-constructor)

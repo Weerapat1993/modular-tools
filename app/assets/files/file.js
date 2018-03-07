@@ -67,7 +67,7 @@ export const ${Case.pascal(env)} = (state) => state.${Case.camel(env)}
 
 exports.actionsText = env => `import axios from 'axios'
 import { FETCH_${Case.upper(env)}_LIST } from './${Case.camel(env)}ActionTypes'
-import { API_ENDPOINT_${Case.upper(env)}_LIST } from './${Case.camel(env)}Endpoint'
+import { API_ENDPOINT_${Case.upper(env)}_LIST } from './${Case.camel(env)}Endpoints'
 
 export const fetch${Case.pascal(env)}ListRequest = () => ({ type: FETCH_${Case.upper(env)}_LIST.REQUEST }) 
 export const fetch${Case.pascal(env)}ListSuccess = (data) => ({ type: FETCH_${Case.upper(env)}_LIST.SUCCESS, data }) 
