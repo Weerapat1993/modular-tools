@@ -35,10 +35,17 @@ npm install -g
 
 ### Create File in Project
 ```sh
-modular make:common [name]
+modular make:common [name] # Mobile only
+modular make:component [name] # Web only
 modular make:feature [name]
-modular make:scene [name]
+modular make:scene [name] # Mobile only
+modular make:page [name] # Web only
 modular make:util [name]
+```
+
+### Create New Project
+```sh
+modular init [name]
 ```
 
 ### Modular Config Project
