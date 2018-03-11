@@ -18,12 +18,12 @@
 * [Container](./docs/container.md)
   * [mapStateToProps](./docs/container.md#1-mapstatetoprops)
   * [mapDispatchToProps](./docs/container.md#2-mapdispatchtoprops)
-  * [Use Connector](#./docs/container.md#3-use-connector)
+  * [Use Connector](./docs/container.md#3-use-connector)
 * [Actions](./docs/actions.md)
 * [Reducer](./docs/reducer.md)
   * [State in Reducer](./docs/reducer.md#1-state-in-reducer)
-  * [Reducer Function](./docs/reducer.md#2-reducer-function)
-  * [Util Class Reducer](./docs/reducer.md#3-util-class-reducer)
+  * [Function Reducer](./docs/reducer.md#2-function-reducer)
+  * [Class Reducer](./docs/reducer.md#3-class-reducer)
 * [JSDoc](./docs/jsdoc.md)
 
 

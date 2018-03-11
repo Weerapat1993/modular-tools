@@ -6,13 +6,13 @@
 ```js
 const { API_ROOT } = finallyApi
 const API_VERSION_1 = '/api/v1'
-const API_ENDPOINT_REFUND_ORDERS = '/refund-orders'
+const API_ENDPOINT_FEEDS = '/feeds'
 
 export const fetchFeed = () => (dispatch, getState) => {
   dispatch({ type: FETCH_FEED.REQUEST })
   return axios({
     method: 'GET',
-    url: `${API_ROOT}${API_VERSION_1}${API_ENDPOINT_REFUND_ORDERS}?status=${ALL_UNCOMPLETED}`,
+    url: `${API_ROOT}${API_VERSION_1}${API_ENDPOINT_FEEDS}`,
     headers: {
       Authentication: token
     }
@@ -24,7 +24,7 @@ export const fetchFeed = () => (dispatch, getState) => {
 
 **Good**
 ```js
-const API_ENDPOINT_REFUND_ORDERS = (status) => API_ENDPOINT(API_VERSION_1, `/refund-orders?status=${status}`)
+const API_ENDPOINT_FEEDS = () => API_ENDPOINT(API_VERSION_1, '/feeds')
 
 export const fetchFeedRequest = () => ({ type: FETCH_FEED.REQUEST })
 export const fetchFeedSuccess = (data) => ({ type: FETCH_FEED.SUCCESS, data })
@@ -33,7 +33,7 @@ export const fetchFeed = (status) => (dispatch, getState) => {
   dispatch(fetchFeedRequest())
   return axios({
     method: 'GET',
-    url: API_ENDPOINT_REFUND_ORDERS(status),
+    url: API_ENDPOINT_FEEDS(status),
     headers: {
       Authentication: token
     }

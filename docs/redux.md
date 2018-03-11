@@ -23,17 +23,15 @@ import { connect } from 'react-redux'
 import { store } from '../utils'
 import { fetchGithub } from '../redux/github'
 
-export const withGitHub = (WrapperComponent) => (
-  connect(
-    // mapStateToProps
-    (state, ownProps) => ({
-      data: store(state).github.search.data,
-    }),
-    // mapDispatchToProps
-    {
-      fetchGithub,
-    }
-  )(WrapperComponent)
+export const withGitHub = connect(
+  // mapStateToProps
+  (state, ownProps) => ({
+    data: store(state).github.search.data,
+  }),
+  // mapDispatchToProps
+  {
+    fetchGithub,
+  }
 )
 ```
 
@@ -60,7 +58,7 @@ import { fetchGithub } from '../redux/github'
 export const withGitHub = (WrapperComponent) => {
   class HOC extends Component {
     componentDidMount() {
-      this.props.fetchData()
+      this.props.fetchGithub()
     }
 
     render() {

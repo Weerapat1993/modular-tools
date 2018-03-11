@@ -4,8 +4,8 @@
 
 ## Table of Contents
 * [State in Reducer](#1-state-in-reducer)
-* [Reducer Function](#2-reducer-function)
-* [Util Class Reducer](#3-util-class-reducer)
+* [Function Reducer](#2-function-reducer)
+* [Class Reducer](#3-class-reducer)
 
 ### 1. State in Reducer
 
@@ -36,13 +36,14 @@ const initialState = {
 }
 ```
 
-### 2. Reducer Function
+### 2. Function Reducer
 
-**Bad**
+**Old**
 ```js
 // InitalState
 const initialState = {
   isFetching: false,
+  isReload: true,
   error: '',
   data: [],
 }
@@ -52,20 +53,39 @@ export default (state = initialState, action) => {
     case FETCH_FEED.REQUEST:
       return {
         ...state,
-        isFetching: true,
+        keys: {
+          [action.key]: {
+            ...state.keys[action.key],
+            isFetching: true,
+            isReload: false,
+            error: '',
+          }
+        }
       }
     case FETCH_FEED.SUCCESS:
       return {
         ...state,
-        isFetching: false,
-        error: '',
-        data: action.data
+        keys: {
+          [action.key]: {
+            ...state.keys[action.key],
+            isFetching: false,
+            isReload: false,
+            error: '',
+            data: action.data
+          }
+        }
       }
     case FETCH_FEED.FAILURE:
       return {
         ...state,
-        isFetching: false,
-        error: action.error.message
+        keys: {
+          [action.key]: {
+            ...state.keys[action.key],
+            isFetching: false,
+            isReload: false,
+            error: action.error.message,
+          }
+        }
       }
     default:
       return state
@@ -73,94 +93,49 @@ export default (state = initialState, action) => {
 }
 ```
 
-**Good**
+### 3. Class Reducer
+
+**[New] Class Redcuer**
 ```js
 import { Reducer } from '../utils'
-
-// InitalState
-const initialState = {
-  isFetching: false,
-  isReload: true,
-  error: '',
-  data: [],
-}
-
-/**
- * @param {initialState} state
- * @param {{ type: string, data: any, error: Error }} action
- * @return {initialState}
- */
-export const feedReducer = (state = initialState, action) => {
-  const reducer = new Reducer(state, action)
-  switch(action.type) {
-    case FETCH_FEED.REQUEST:
-      return reducer.getRequest()
-    case FETCH_FEED.SUCCESS:
-      return reducer.fetchFeedSuccess()
-    case FETCH_FEED.FAILURE:
-      return reducer.getFailure()
-    default:
-      return state
-  }
-}
-```
-
-**[New] Class Redcuer (Best)**
-```js
-import { Reducer } from '../utils'
-
-// InitalState
-const initialState = {
-  isFetching: false,
-  isReload: true,
-  error: '',
-  data: [],
-}
 
 class FeedReducer extends Reducer {
+  initialState = {
+    isFetching: false,
+    isReload: true,
+    error: '',
+    data: [],
+  }
+
   getState() {
     const { type, data } = this.action
     switch(type) {
       case FETCH_FEED.REQUEST:
-        return this.getRequest()
+        return this.setStateWithKeyRequest()
       case FETCH_FEED.SUCCESS:
-        return this.fetchFeedSuccess({ data })
+        return this.setStateWithKeySuccess({ data })
       case FETCH_FEED.FAILURE:
-        return this.getFailure()
+        return this.setStateWithKeyFailure()
       default:
         return this.state
     }
   }
 }
 
-/** @type {initialState} */
-export const feedReducer = classReducer(FeedReducer, initialState)
+export const feedReducer = classReducer(FeedReducer)
 ```
 
+**Util Class Reducer**
 
-### 3. Util Class Reducer
-
-* [Reducer.js](../src/utils/Reducer/Reducer.js)
-  * [setState()](#)
-  * [getRequest()](#)
-  * [getSuccess()](#)
-  * [getFailure()](#)
-* [NormalizeReducer.js](#)
-  * [setState()](#)
-  * [getState()](#)
-  * [setStateWithKey()](#)
-  * [getRequestWithKey()](#)
-  * [getSuccessWithKey()](#)
-  * [getFailureWithKey()](#)
-* [FullStackReducer.js](#)
-  * [setState()](#)
-  * [getState()](#)
-  * [setStateWithKey()](#)
-  * [getRequest()](#)
-  * [getSuccess()](#)
-  * [getFailure()](#)
-  * [getRequestWithKey()](#)
-  * [getSuccessWithKey()](#)
-  * [getFailureWithKey()](#)
+* [initialState](#)
+* [setState()](#)
+* [getState()](#)
+* [setStateWithKey()](#)
+* [setStateWithKeyRequest()](#)
+* [setStateWithKeySuccess()](#)
+* [setStateWithKeyFailure()](#)
+* [getStateWithKey()](#)
+* [errorMessage()](#)
+* [arrayToObject()](#)
 
 [Back to Top](#table-of-contents)
