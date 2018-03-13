@@ -40,24 +40,20 @@ export const API_ENDPOINT_${Case.upper(env)}_LIST = () => API_ENDPOINT('/${Case.
     .createFile(`/features/${envCamelCase}/redux/${envCamelCase}Reducer.js`, Files.reducerText(env))
     .createFile(`/features/${envCamelCase}/redux/${envCamelCase}Selector.js`, `import _ from 'lodash'
 
-const defaultState = {
-  isFetching: false,
-  isReload: true,
-  data: {},
-  error: '',
+export class ${envPascalCase} {
+  static defaultProps = {
+    isFetching: false,
+    isReload: true,
+    data: {},
+    error: '',
+  }
+
+  static get(state, key) {
+    return _.get(state, \`${envCamelCase}.\${key}\`, ${envPascalCase}.defaultProps)
+  }
 }
 
-/**
- * Select ${envPascalCase} With Key
- * @param {Object} state 
- * @param {string} key
- * @return {defaultState} 
- */
-export const select${envPascalCase}WithKey = (state, key) => {
-    const defaultStateInline = defaultState
-    const article = _.get(state, key, defaultStateInline)
-    return article
-}
+export default ${envPascalCase}
 `)
     .createFile(`/features/${envCamelCase}/redux/${envCamelCase}Utils.js`, '');
 
