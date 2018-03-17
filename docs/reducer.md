@@ -1,4 +1,4 @@
-## Reducer
+## Class Reducer - การเขียน Reducer ในรูปแบบ Class
 
 [< Back](../README.md)
 

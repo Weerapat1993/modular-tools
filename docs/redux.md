@@ -1,20 +1,7 @@
-## Redux in Folder Feature
-
+## Redux Connector
 [< Back](../README.md)
 
-## Table of Contents
-* [Actions](#1-actions)
-* [Action Type](#2-action-types)
-* [Connector](#3-connector)
-* [Endpoints](#4-endpoints)
-* [Reducer](#5-reducer)
-* [Selector](#6-selector)
-* [Utils](#7-utils)
-
-### 3. Connector
-**[New] Create Connector in Redux Folder (Best)**
-
-Use theory `High Order Component`
+- เขียน Scope แยกการทำงานโดยเขียนในรูปแบบ High Order Component
 
 **Short Hand**
 ```js

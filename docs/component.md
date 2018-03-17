@@ -1,4 +1,4 @@
-# Component
+# Class Component
 
 [< Back](../README.md)
 

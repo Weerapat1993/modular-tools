@@ -1,4 +1,4 @@
-# Actions
+# Action Creator
 
 [< Back](../README.md)
 
