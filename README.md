@@ -6,7 +6,7 @@
 * [Folder Structure](./docs/folder-structure.md)
 * [JSDoc - เขียน Comment อย่างไรให้อ่านแล้วเข้าใจง่าย](./docs/jsdoc.md)
 * [Base Style - การเขียน StyleSheet ในรูปแบบ Class](./docs/base-style.md)
-* [Constants - วิธีสร้างตัวแปรเรียกใช้งาน](./docs/constants.md)
+* [Constants - วิธีการประกาศตัวแปร](./docs/constants.md)
 * [Class Component](./docs/component.md)
 * [Class Container](./docs/container.md)
 * [Action Creator](./docs/actions.md)
