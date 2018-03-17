@@ -2,6 +2,7 @@
 
 **ตัวอย่างการเขียนตัวจัดการกรองข้อมูล Data**
 ```js
+// productSelector.js
 import { get } from 'lodash'
 
 class Product {
@@ -25,6 +26,20 @@ class Product {
 }
 
 export default Product
+```
+
+**Usage**
+```js
+// productConnector.js
+import { connect } from 'react-redux'
+import Product from './productSelector'
+
+export const withGitHub = connect(
+  // mapStateToProps
+  (state, ownProps) => ({
+    data: Product(state, ownProps.id).data,
+  }),
+)
 ```
 
 [< Back](../README.md)
