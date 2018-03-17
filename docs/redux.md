@@ -65,4 +65,4 @@ class ProductContainer extends Component {
 export default withGithub(ProductContainer)
 ```
 
-[Back to Top](#table-of-contents)
+[< Back](../README.md)

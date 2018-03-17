@@ -1,5 +1,7 @@
 # Class Selector - การเขียนตัวจัดการกรองข้อมูล Data
 
+[< Back](../README.md)
+
 **ตัวอย่างการเขียนตัวจัดการกรองข้อมูล Data**
 ```js
 // productSelector.js
