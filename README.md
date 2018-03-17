@@ -11,9 +11,9 @@
 * [Class Container](./docs/container.md)
 * [Action Creator](./docs/actions.md)
 * [Class Reducer - การเขียน Reducer ในรูปแบบ Class](./docs/reducer.md)
+* [Class Selector - การเขียนตัวจัดการกรองข้อมูล Data](./docs/selector.md)
 * [Redux Connector - เขียน Scope แยกการทำงานโดยเขียนในรูปแบบ High Order Component](./docs/redux.md)
 * [User Interface State ทุกแอปพลิเคชั่นควรมี](./docs/error-handling.md)
-
 
 ### How to use
 ```

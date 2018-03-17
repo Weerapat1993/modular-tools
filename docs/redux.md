@@ -22,18 +22,6 @@ export const withGitHub = connect(
 )
 ```
 
-**Usage**
-```js
-// ProductConnector.js
-import { withGitHub } from '../github'
-
-class ProductContainer extends Component {
-  ...
-}
-
-export default withGithub(ProductContainer)
-```
-
 **Full Option**
 ```js
 // productConnector.js
@@ -63,6 +51,18 @@ export const withGitHub = (WrapperComponent) => {
   })
   return connect(mapStateToProps, mapDispatchToProps)(WrapperComponent)
 }
+```
+
+**Usage**
+```js
+// ProductConnector.js
+import { withGitHub } from '../github'
+
+class ProductContainer extends Component {
+  ...
+}
+
+export default withGithub(ProductContainer)
 ```
 
 [Back to Top](#table-of-contents)

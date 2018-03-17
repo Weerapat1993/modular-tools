@@ -15,6 +15,8 @@ class Style extends BaseStyle {
     borderRadius: value / 2
   })
 }
+
+export default new Style()
 ```
 
 [< Back](../README.md)
