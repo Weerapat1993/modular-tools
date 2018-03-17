@@ -109,6 +109,9 @@ const Config = async (pwd, cmd, env) => {
       break
     default:
   }
+  if(answer.config_type !== 'Cancel') {
+    await Config(pwd, cmd, env)
+  }
 }
 
 /**
