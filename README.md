@@ -24,7 +24,9 @@
   * [State in Reducer](./docs/reducer.md#1-state-in-reducer)
   * [Function Reducer](./docs/reducer.md#2-function-reducer)
   * [Class Reducer](./docs/reducer.md#3-class-reducer)
-* [JSDoc](./docs/jsdoc.md)
+* [JSDoc - เขียน Comment อย่างไรให้อ่านแล้วเข้าใจง่าย](./docs/jsdoc.md)
+* [Base Style - การเขียน StyleSheet ในรูปแบบ Class](./docs/base-style.md)
+* [User Interface State ทุกแอปพลิเคชั่นควรมี](./docs/error-handling.md)
 
 
 ### How to use
