@@ -5,6 +5,6 @@ const Table = require('cli-table2');
  * @param {[]} head
  * @return {Table}
  */
-const createTable = (head) => new Table({ head, chars: { 'mid': '', 'left-mid': '', 'mid-mid': '', 'right-mid': '' }});
+const createTable = head => new Table({ head, chars: { 'mid': '', 'left-mid': '', 'mid-mid': '', 'right-mid': '' }});
 
 module.exports = createTable;

@@ -1,8 +1,17 @@
 const Case = require('case');
 
 exports.componentText = name => `import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class ${name} extends Component {
+  static propTypes = {
+    data: PropTypes.string,
+  }
+
+  static defaultProps = {
+    data: '',
+  }
+
   render() {
     return (
       <div>${name}</div>
@@ -14,24 +23,26 @@ export default ${name}
 `;
 
 exports.connectorText = env => `import { connect } from 'react-redux'
-import { ${Case.pascal(env)} } from './${Case.camel(env)}Reducer'
+import { ${Case.pascal(env)} } from './${Case.camel(env)}Selector'
 
 export const with${Case.pascal(env)} = (
   connect (
-    (state) => ({
-      ${Case.camel(env)}: ${Case.pascal(env)}(state),
+    (state, ownProps) => ({
+      ${Case.camel(env)}: ${Case.pascal(env)}.getByID(state),
     }),
     {
 
     }
   )
 )
+
+export default with${Case.pascal(env)}
 `;
 
 exports.reducerText = env => `import { FETCH_${Case.upper(env)}_LIST } from './${Case.camel(env)}ActionTypes'
 
 // InititalState
-const initialState = {
+export const initialState = {
   isFetching: false,
   isReload: true,
   data: [],
@@ -56,13 +67,6 @@ export const ${Case.camel(env)}Reducer = (state = initialState, action) => {
       return state
   }
 }
-
-/**
- * ${Case.pascal(env)} Model
- * @param {Object} state
- * @return {initialState}
- */
-export const ${Case.pascal(env)} = (state) => state.${Case.camel(env)}
 `;
 
 exports.actionsText = env => `import axios from 'axios'

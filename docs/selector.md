@@ -17,13 +17,13 @@ class Product {
   }
 
   // Get Product By ID
-  static get(state, key) {
-    return get(state, `product.keys.${key}`, this.defaultProps)
+  static getByID(state, key) {
+    return get(state.product.keys, key, this.defaultProps)
   }
 
   // Get Data Product By ID
-  static getData(state, key) {
-    return this.get(state, key).data
+  static getDataByID(state, key) {
+    return this.getByID(state, key).data
   }
 }
 
@@ -39,8 +39,8 @@ import Product from './productSelector'
 export const withGitHub = connect(
   // mapStateToProps
   (state, ownProps) => ({
-    data: Product(state, ownProps.id).data,
-  }),
+    data: Product.getByID(state, ownProps.id).data,
+  })
 )
 ```
 

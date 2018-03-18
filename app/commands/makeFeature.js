@@ -36,7 +36,7 @@ export const FETCH_${Case.upper(env)}_LIST = asyncActionType('FETCH_${Case.upper
 `)
     .createFile(`/features/${envCamelCase}/redux/${envCamelCase}Connector.js`, Files.connectorText(env))
     .createFile(`/features/${envCamelCase}/redux/${envCamelCase}Endpoints.js`, `
-export const API_ENDPOINT_${Case.upper(env)}_LIST = () => API_ENDPOINT('/${Case.upper(env)}')`)
+export const API_ENDPOINT_${Case.upper(env)}_LIST = () => API_ENDPOINT('/${Case.kebab(env)}')`)
     .createFile(`/features/${envCamelCase}/redux/${envCamelCase}Reducer.js`, Files.reducerText(env))
     .createFile(`/features/${envCamelCase}/redux/${envCamelCase}Selector.js`, `import _ from 'lodash'
 
@@ -48,7 +48,13 @@ export class ${envPascalCase} {
     error: '',
   }
 
-  static get(state, key) {
+  /**
+   * Get ${envPascalCase} by ID
+   * @param {*} state
+   * @param {string} key
+   * @return {typeof ${envPascalCase}.defaultProps}
+   */
+  static getByID(state, key) {
     return _.get(state, \`${envCamelCase}.\${key}\`, ${envPascalCase}.defaultProps)
   }
 }

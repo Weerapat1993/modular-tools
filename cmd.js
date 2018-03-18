@@ -91,11 +91,9 @@ switch (cmdValue) {
     });
     break;
   case 'make:util':
-    if (envValue) {
+    checkName(envValue, () => {
       MakeUtil(pwd, cmdValue, envValue);
-    } else {
-      console.log('Error');
-    }
+    });
     break;
   default:
     console.log('');
