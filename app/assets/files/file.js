@@ -39,7 +39,7 @@ export const with${Case.pascal(env)} = (
 export default with${Case.pascal(env)}
 `;
 
-exports.reducerText = env => `import { FETCH_${Case.upper(env)}_LIST } from './${Case.camel(env)}ActionTypes'
+exports.reducerText = env => `import { FETCH_${Case.constant(env)}_LIST } from './${Case.camel(env)}ActionTypes'
 
 // InititalState
 export const initialState = {
@@ -57,11 +57,11 @@ export const initialState = {
  */
 export const ${Case.camel(env)}Reducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_${Case.upper(env)}_LIST.REQUEST:
+    case FETCH_${Case.constant(env)}_LIST.REQUEST:
       return state
-    case FETCH_${Case.upper(env)}_LIST.SUCCESS:
+    case FETCH_${Case.constant(env)}_LIST.SUCCESS:
       return state
-    case FETCH_${Case.upper(env)}_LIST.FAILURE:
+    case FETCH_${Case.constant(env)}_LIST.FAILURE:
       return state
     default:
       return state
@@ -70,18 +70,18 @@ export const ${Case.camel(env)}Reducer = (state = initialState, action) => {
 `;
 
 exports.actionsText = env => `import axios from 'axios'
-import { FETCH_${Case.upper(env)}_LIST } from './${Case.camel(env)}ActionTypes'
-import { API_ENDPOINT_${Case.upper(env)}_LIST } from './${Case.camel(env)}Endpoints'
+import { FETCH_${Case.constant(env)}_LIST } from './${Case.camel(env)}ActionTypes'
+import { API_ENDPOINT_${Case.constant(env)}_LIST } from './${Case.camel(env)}Endpoints'
 
-export const fetch${Case.pascal(env)}ListRequest = () => ({ type: FETCH_${Case.upper(env)}_LIST.REQUEST }) 
-export const fetch${Case.pascal(env)}ListSuccess = (data) => ({ type: FETCH_${Case.upper(env)}_LIST.SUCCESS, data }) 
-export const fetch${Case.pascal(env)}ListFailure = (error) => ({ type: FETCH_${Case.upper(env)}_LIST.FAILURE, error }) 
+export const fetch${Case.pascal(env)}ListRequest = () => ({ type: FETCH_${Case.constant(env)}_LIST.REQUEST }) 
+export const fetch${Case.pascal(env)}ListSuccess = (data) => ({ type: FETCH_${Case.constant(env)}_LIST.SUCCESS, data }) 
+export const fetch${Case.pascal(env)}ListFailure = (error) => ({ type: FETCH_${Case.constant(env)}_LIST.FAILURE, error }) 
 export const fetch${Case.pascal(env)}List = () => (dispatch) => {
   dispatch(fetch${Case.pascal(env)}ListRequest())
   return axios({
     method: 'GET',
     responseType: 'json',
-    url: API_ENDPOINT_${Case.upper(env)}_LIST(),
+    url: API_ENDPOINT_${Case.constant(env)}_LIST(),
   })
     .then(res => dispatch(fetch${Case.pascal(env)}ListSuccess(res.data.data)))
     .catch(error => dispatch(fetch${Case.pascal(env)}ListFailure(error)))

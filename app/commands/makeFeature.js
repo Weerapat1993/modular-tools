@@ -32,11 +32,11 @@ export { select${envPascalCase}WithKey } from './${envCamelCase}Selector'
 `)
     .createFile(`/features/${envCamelCase}/redux/${envCamelCase}Actions.js`, Files.actionsText(env))
     .createFile(`/features/${envCamelCase}/redux/${envCamelCase}ActionTypes.js`, `
-export const FETCH_${Case.upper(env)}_LIST = asyncActionType('FETCH_${Case.upper(env)}_LIST')
+export const FETCH_${Case.constant(env)}_LIST = asyncActionType('FETCH_${Case.constant(env)}_LIST')
 `)
     .createFile(`/features/${envCamelCase}/redux/${envCamelCase}Connector.js`, Files.connectorText(env))
     .createFile(`/features/${envCamelCase}/redux/${envCamelCase}Endpoints.js`, `
-export const API_ENDPOINT_${Case.upper(env)}_LIST = () => API_ENDPOINT('/${Case.kebab(env)}')`)
+export const API_ENDPOINT_${Case.constant(env)}_LIST = () => API_ENDPOINT('/${Case.kebab(env)}')`)
     .createFile(`/features/${envCamelCase}/redux/${envCamelCase}Reducer.js`, Files.reducerText(env))
     .createFile(`/features/${envCamelCase}/redux/${envCamelCase}Selector.js`, `import _ from 'lodash'
 
