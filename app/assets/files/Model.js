@@ -11,6 +11,11 @@ import { Model } from '../utils/Model'
 export class ${Case.pascal(env)} extends Model {
   // Table Name
   static table = '${Case.camel(env)}'
+
+  // No check isRequired in PropTypes
+  static isRequired = {
+    description: false
+  }
   
   /**
    * Set ${Case.pascal(env)} Model
