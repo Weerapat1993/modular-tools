@@ -17,8 +17,8 @@ const makeCommon = (pwd, cmd, env) => {
 
 export { ${envPascalCase} }
 `)
-    .createFile(`/common/${envPascalCase}/${envPascalCase}.js`, Files.componentText(envPascalCase))
-    .createFile(`/common/${envPascalCase}/styles.js`, Files.stylesText());
+    .createFile(`/common/${envPascalCase}/${envPascalCase}.js`, Files.Component(envPascalCase))
+    .createFile(`/common/${envPascalCase}/styles.js`, Files.Style());
 
   log.default('\nPlease add text info file ./src/common/index.js\n');
   log.success(`export { ${envPascalCase} } from './${envPascalCase}'\n`);

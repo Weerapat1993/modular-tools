@@ -17,8 +17,8 @@ const makeComponent = (pwd, cmd, env) => {
 
 export { ${envPascalCase} }
 `)
-    .createFile(`/components/${envPascalCase}/${envPascalCase}.js`, Files.componentText(envPascalCase))
-    .createFile(`/components/${envPascalCase}/styles.js`, Files.stylesText());
+    .createFile(`/components/${envPascalCase}/${envPascalCase}.js`, Files.Component(envPascalCase))
+    .createFile(`/components/${envPascalCase}/styles.js`, Files.Style());
 
   log.default('\nPlease add text info file ./src/components/index.js\n');
   log.success(`export { ${envPascalCase} } from './${envPascalCase}'\n`);

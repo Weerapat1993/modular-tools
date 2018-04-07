@@ -17,7 +17,7 @@ const makeScene = (pwd, cmd, env) => {
 
 export { ${envPascalCase} }
 `)
-    .createFile(`/scenes/${envCamelCase}/${envPascalCase}.js`, Files.componentText(envPascalCase));
+    .createFile(`/scenes/${envCamelCase}/${envPascalCase}.js`, Files.Scene(envPascalCase));
 
   log.default('\nPlease add text info file ./src/scenes/index.js\n');
   log.success(`export { ${envPascalCase} } from './${envCamelCase}'\n`);
