@@ -9,6 +9,7 @@ const MakeCommon = require('./makeCommon');
 const MakeUtil = require('./makeUtil');
 const MakeScene = require('./makeScene');
 const MakePage = require('./makePage');
+const MakeModel = require('./makeModel');
 
 
 exports.ConfigAdd = ConfigAdd;
@@ -24,3 +25,4 @@ exports.MakeUtil = MakeUtil;
 exports.MakeCommon = MakeCommon;
 exports.MakeScene = MakeScene;
 exports.MakePage = MakePage;
+exports.MakeModel = MakeModel;

@@ -27,6 +27,7 @@ npm install -g
 modular make:common [name] # Mobile only
 modular make:component [name] # Web only
 modular make:feature [name]
+modular make:model [name]
 modular make:scene [name] # Mobile only
 modular make:page [name] # Web only
 modular make:util [name]
