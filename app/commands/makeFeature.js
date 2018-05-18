@@ -44,8 +44,8 @@ export { with${envPascalCase}Detail } from './with${envPascalCase}Detail'
     .createFile(`/features/${envCamelCase}/redux/${envCamelCase}Selector.js`, Files.Selector(env))
     .createFile(`/features/${envCamelCase}/redux/${envCamelCase}Utils.js`, '')
     // Model
-    .createDirectory('/models')
-    .createFile(`/models/${Case.pascal(env)}.js`, Files.Model(env));
+    .createDirectory(`/features/${envCamelCase}/models`)
+    .createFile(`/features/${envCamelCase}/models/${Case.pascal(env)}.js`, Files.Model(env));
 
   log.default('\nPlease add text info file ./src/views/features/index.js\n');
   log.success(`export * from './${envCamelCase}'\n`);

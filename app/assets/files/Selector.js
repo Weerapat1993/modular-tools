@@ -1,9 +1,9 @@
 const Case = require('case');
 
 exports.Selector = env => `import { get } from 'lodash'
-import { ${Case.pascal(env)} as Model } from '../../../models/${Case.pascal(env)}'
+import { ${Case.pascal(env)} as Model } from '../models/${Case.pascal(env)}'
 
-export class ${Case.pascal(env)} {
+export class ${Case.pascal(env)}Selector {
   static defaultKeys = {
     isFetching: false,
     isReload: true,
@@ -38,5 +38,5 @@ export class ${Case.pascal(env)} {
   }
 }
 
-export default ${Case.pascal(env)}
+export default ${Case.pascal(env)}Selector
 `;

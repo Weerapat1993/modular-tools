@@ -2,7 +2,7 @@ const Case = require('case');
 
 exports.Reducer = env => `import { FETCH_${Case.constant(env)}_LIST, FETCH_${Case.constant(env)}_DETAIL } from './${Case.camel(env)}ActionTypes'
 import { classReducer, Reducer } from '../../utils'
-import { ${Case.pascal(env)} as Model } from '../../../models/${Case.pascal(env)}'
+import { ${Case.pascal(env)} as Model } from '../models/${Case.pascal(env)}'
 
 /**
  * @class ${Case.pascal(env)}Reducer
