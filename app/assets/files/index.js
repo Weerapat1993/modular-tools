@@ -9,6 +9,9 @@ const { Selector } = require('./Selector');
 const { ActionTypes } = require('./ActionTypes');
 const { Page } = require('./Page');
 const { Scene } = require('./Scene');
+const { UnitTestActions } = require('./tests/UnitTestActions');
+const { UnitTestReducer } = require('./tests/UnitTestReducer');
+const { UnitTestSelector } = require('./tests/UnitTestSelector')
 
 module.exports = {
   Actions,
@@ -23,4 +26,7 @@ module.exports = {
   Selector,
   Page,
   Scene,
+  UnitTestActions,
+  UnitTestReducer,
+  UnitTestSelector,
 };

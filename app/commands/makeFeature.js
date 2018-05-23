@@ -16,6 +16,11 @@ const makeFeature = (pwd, cmd, env) => {
     .createDirectory(`/features/${envCamelCase}/components`)
     .createDirectory(`/features/${envCamelCase}/redux`)
     .createDirectory(`/features/${envCamelCase}/redux/connectors`)
+    .createDirectory(`/features/${envCamelCase}/redux/__tests__`)
+    // Model
+    .createDirectory(`/features/${envCamelCase}/models`)
+    .createFile(`/features/${envCamelCase}/models/${Case.pascal(env)}.js`, Files.Model(env))
+    // File
     .createFile(`/features/${envCamelCase}/index.js`, `
 export * from './components'
 export * from './redux'`)
@@ -43,9 +48,10 @@ export { with${envPascalCase}Detail } from './with${envPascalCase}Detail'
     .createFile(`/features/${envCamelCase}/redux/${envCamelCase}Reducer.js`, Files.Reducer(env))
     .createFile(`/features/${envCamelCase}/redux/${envCamelCase}Selector.js`, Files.Selector(env))
     .createFile(`/features/${envCamelCase}/redux/${envCamelCase}Utils.js`, '')
-    // Model
-    .createDirectory(`/features/${envCamelCase}/models`)
-    .createFile(`/features/${envCamelCase}/models/${Case.pascal(env)}.js`, Files.Model(env));
+    // UnitTest
+    .createFile(`/features/${envCamelCase}/redux/__tests__/${envCamelCase}Actions.spec.js`, Files.UnitTestActions(env))
+    .createFile(`/features/${envCamelCase}/redux/__tests__/${envCamelCase}Reducer.spec.js`, Files.UnitTestReducer(env))
+    .createFile(`/features/${envCamelCase}/redux/__tests__/${envCamelCase}Selector.spec.js`, Files.UnitTestSelector(env))
 
   log.default('\nPlease add text info file ./src/views/features/index.js\n');
   log.success(`export * from './${envCamelCase}'\n`);
